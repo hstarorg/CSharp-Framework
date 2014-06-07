@@ -1,4 +1,5 @@
-命名空间：Hstar.Framework；程序集：Hstar.Framework.dll
+命名空间：Hstar.Framework；
+程序集：Hstar.Framework.dll
 ================
 概述：个人项目的基础框架层。
 详细：

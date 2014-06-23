@@ -1,5 +1,6 @@
 ﻿using IBatisNet.DataMapper;
 using IBatisNet.DataMapper.Configuration;
+using IBatisNet.DataMapper.SessionStore;
 
 namespace Hstar.Framework.IBatis4Net
 {
@@ -13,10 +14,11 @@ namespace Hstar.Framework.IBatis4Net
         /// <summary>
         /// 初始化Ibatis的SqlMapper
         /// </summary>
-        public static void InitMapper()
+        public static void InitMapper(string configFilePath = null)
         {
-            DomSqlMapBuilder builder = new DomSqlMapBuilder();
-            mapper = builder.Configure();
+            var builder = new DomSqlMapBuilder();
+            mapper = string.IsNullOrEmpty(configFilePath) ? builder.Configure() : builder.Configure(configFilePath);
+            mapper.SessionStore = new HybridWebThreadSessionStore(mapper.Id);
         }
 
         /// <summary>
